@@ -1,33 +1,21 @@
 //! create an express server and check if it's working
 
 import express from "express";
+import cors from "cors"; // cross origin resource sharing (browser blocks the request which comes from anywhere but localhost:8000)
 // 1) we are importing express module which we installed using npm i
+
+import userRoutes from "./routes/auth-route.js";
 
 // 2) call/invoke the function
 let app = express(); // object = {listen}
 
-// 4) declare routes -> app.http_method('endpoint', callback)
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  }),
+);
 
-app.get("/", (req, res) => {
-  // req, res -> object
-  //   res.send("welcome");
-  //   res.json({
-  //     success: true,
-  //     message: "okay",
-  //     data: { userName: "abc" },
-  //   });
-
-  res.status(500).json({
-    // 500 internal server error
-    success: false,
-    message: "error occurred",
-    err: { name: "some error" },
-  });
-});
-
-app.get("/about", (req, res) => {
-  res.status(122).json({ message: "hi" });
-});
+app.use("/api/auth", userRoutes); // http://localhost:9001/api/auth/signup
 
 // 3) assign a port number to our server
 app.listen(9001, () => {
