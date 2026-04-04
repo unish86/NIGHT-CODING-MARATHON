@@ -25,6 +25,10 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/about", (req, res) => {
+  res.status(122).json({ message: "hi" });
+});
+
 // 3) assign a port number to our server
 app.listen(9001, () => {
   console.log("Server Started.....");
