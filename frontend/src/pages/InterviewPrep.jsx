@@ -27,7 +27,10 @@ const parseError = (err) => {
 const InterviewPrep = () => {
   const { id } = useParams();
   const [questions, setQuestions] = useState([]);
+<<<<<<< HEAD
   const [session, setSession] = useState(null);
+=======
+>>>>>>> f7e936b7c1352b3a4b0000364b491be6050fddb4
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [fetchError, setFetchError] = useState(null);
@@ -37,7 +40,10 @@ const InterviewPrep = () => {
     setFetchError(null);
     try {
       const res = await axios.get(`${API_PATHS.SESSION.GET_ONE}/${id}`);
+<<<<<<< HEAD
       setSession(res.data.session);
+=======
+>>>>>>> f7e936b7c1352b3a4b0000364b491be6050fddb4
       setQuestions(res.data.session.questions || []);
     } catch (err) {
       console.log(err.response);
@@ -81,6 +87,7 @@ const InterviewPrep = () => {
             <h1 className="text-2xl font-bold text-slate-800">
               Interview Questions
             </h1>
+<<<<<<< HEAD
             {session ? (
               <p className="mt-1 text-sm text-slate-500">
                 {session.role} • {session.experience}
@@ -92,6 +99,12 @@ const InterviewPrep = () => {
                   ? `${questions.length} question${
                       questions.length !== 1 ? "s" : ""
                     } ready`
+=======
+            {!loading && !fetchError && (
+              <p className="text-sm text-slate-500 mt-0.5">
+                {questions.length > 0
+                  ? `${questions.length} question${questions.length !== 1 ? "s" : ""} ready`
+>>>>>>> f7e936b7c1352b3a4b0000364b491be6050fddb4
                   : "No questions yet"}
               </p>
             )}

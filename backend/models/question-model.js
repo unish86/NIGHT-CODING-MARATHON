@@ -6,12 +6,19 @@ const questionsSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Session",
     },
+<<<<<<< HEAD
     question: { type: String, required: true },
     answer: { type: String, default: "" },
     note: { type: String, default: "" },
     isPinned: { type: Boolean, default: false },
   },
   { timestamps: true }
+=======
+    question: String,
+    answer: String,
+  },
+  { timestamps: true },
+>>>>>>> f7e936b7c1352b3a4b0000364b491be6050fddb4
 );
 
 const Question = mongoose.model("Question", questionsSchema);
