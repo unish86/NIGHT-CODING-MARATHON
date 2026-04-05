@@ -4,6 +4,10 @@ import User from "../models/user-model.js";
 
 // Generate JWT Token
 const generateToken = (userId) => {
+  if (!process.env.JWT_SECRET) {
+    throw new Error("JWT_SECRET is missing in backend/.env");
+  }
+
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
     expiresIn: "7d",
   });
@@ -14,7 +18,7 @@ const generateToken = (userId) => {
 // @access  Public
 export const registerUser = async (req, res) => {
   try {
-    const { name, email, password, profileImageUrl } = req.body;
+    const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
       return res
@@ -35,14 +39,13 @@ export const registerUser = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      profileImageUrl: profileImageUrl || null,
     });
 
     res.status(201).json({
       _id: user._id,
       name: user.name,
       email: user.email,
-      profileImageUrl: user.profileImageUrl,
+
       token: generateToken(user._id),
     });
   } catch (error) {

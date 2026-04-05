@@ -6,7 +6,6 @@ import Session from "../models/session-model.js";
 // @access  Private
 export const createSession = async (req, res) => {
   try {
-    console.log(1);
     const { role, experience, topicsToFocus, description, questions } =
       req.body;
     const userId = req.user._id; // Assuming you have a middleware setting req.user
@@ -16,13 +15,13 @@ export const createSession = async (req, res) => {
       user: userId,
       role,
       experience,
-      topicsToFocus,
-      description,
+      topicsToFocus: topicsToFocus || "",
+      description: description || "",
     });
 
     // Create questions and collect their IDs
     const questionDocs = await Promise.all(
-      questions.map(async (q) => {
+      (questions || []).map(async (q) => {
         const question = await Question.create({
           session: session._id,
           question: q.question,
@@ -49,7 +48,7 @@ export const createSession = async (req, res) => {
     // });
     res.status(201).json({
       success: true,
-      session,
+      session: await session.populate("questions"),
     });
   } catch (error) {
     console.error(error);
