@@ -19,6 +19,10 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
