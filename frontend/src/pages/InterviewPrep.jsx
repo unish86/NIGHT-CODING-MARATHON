@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+﻿import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useParams } from "react-router-dom";
@@ -27,10 +27,7 @@ const parseError = (err) => {
 const InterviewPrep = () => {
   const { id } = useParams();
   const [questions, setQuestions] = useState([]);
-<<<<<<< HEAD
   const [session, setSession] = useState(null);
-=======
->>>>>>> f7e936b7c1352b3a4b0000364b491be6050fddb4
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [fetchError, setFetchError] = useState(null);
@@ -40,10 +37,7 @@ const InterviewPrep = () => {
     setFetchError(null);
     try {
       const res = await axios.get(`${API_PATHS.SESSION.GET_ONE}/${id}`);
-<<<<<<< HEAD
       setSession(res.data.session);
-=======
->>>>>>> f7e936b7c1352b3a4b0000364b491be6050fddb4
       setQuestions(res.data.session.questions || []);
     } catch (err) {
       console.log(err.response);
@@ -78,7 +72,6 @@ const InterviewPrep = () => {
       />
 
       <div className="max-w-4xl mx-auto px-6 py-8">
-        {/* ── Header ── */}
         <div className="flex items-center justify-between mb-8">
           <div>
             <p className="text-xs text-slate-400 font-medium tracking-wide uppercase mb-1">
@@ -87,7 +80,6 @@ const InterviewPrep = () => {
             <h1 className="text-2xl font-bold text-slate-800">
               Interview Questions
             </h1>
-<<<<<<< HEAD
             {session ? (
               <p className="mt-1 text-sm text-slate-500">
                 {session.role} • {session.experience}
@@ -96,15 +88,7 @@ const InterviewPrep = () => {
             {!loading && !fetchError && (
               <p className="text-sm text-slate-500 mt-0.5">
                 {questions.length > 0
-                  ? `${questions.length} question${
-                      questions.length !== 1 ? "s" : ""
-                    } ready`
-=======
-            {!loading && !fetchError && (
-              <p className="text-sm text-slate-500 mt-0.5">
-                {questions.length > 0
                   ? `${questions.length} question${questions.length !== 1 ? "s" : ""} ready`
->>>>>>> f7e936b7c1352b3a4b0000364b491be6050fddb4
                   : "No questions yet"}
               </p>
             )}
@@ -117,10 +101,8 @@ const InterviewPrep = () => {
           />
         </div>
 
-        {/* ── Divider ── */}
         <div className="border-t border-slate-200 mb-8" />
 
-        {/* ── Content ── */}
         {loading ? (
           <div className="space-y-4">
             {[...Array(4)].map((_, i) => (

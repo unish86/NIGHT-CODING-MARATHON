@@ -3,7 +3,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 const generateToken = (userId) => {
-<<<<<<< HEAD
   if (!process.env.JWT_SECRET) {
     throw new Error("JWT_SECRET is missing in backend/.env");
   }
@@ -11,10 +10,6 @@ const generateToken = (userId) => {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
     expiresIn: "7d",
   });
-=======
-  let token = jwt.sign({ userId }, "secret", { expiresIn: "1d" });
-  return token;
->>>>>>> f7e936b7c1352b3a4b0000364b491be6050fddb4
 };
 
 // register
@@ -47,10 +42,6 @@ export const registerUser = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
-<<<<<<< HEAD
-
-=======
->>>>>>> f7e936b7c1352b3a4b0000364b491be6050fddb4
       token: generateToken(user._id),
     });
   } catch (error) {

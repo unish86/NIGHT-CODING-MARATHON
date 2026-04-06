@@ -1,10 +1,9 @@
-import { useNavigate } from "react-router-dom";
+﻿import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
-<<<<<<< HEAD
     <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.45),_transparent_26%),linear-gradient(160deg,#fff7ed_0%,#ffffff_40%,#f8fafc_100%)]">
       <div className="absolute left-0 top-16 h-64 w-64 rounded-full bg-orange-200/40 blur-3xl" />
       <div className="absolute right-0 top-32 h-72 w-72 rounded-full bg-slate-200/60 blur-3xl" />
@@ -52,7 +51,7 @@ const LandingPage = () => {
                 Frontend Developer
               </h2>
               <p className="mt-2 text-sm text-slate-500">
-                Experience: 2 years � Focus: React, JavaScript, APIs
+                Experience: 2 years • Focus: React, JavaScript, APIs
               </p>
               <div className="mt-6 space-y-3">
                 <div className="rounded-2xl bg-slate-50 p-4">
@@ -75,31 +74,8 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-=======
-    <div className="h-screen bg-linear-to-r from-yellow-100 to-yellow-50 flex flex-col justify-center items-center text-center px-4">
-
-      <h1 className="text-5xl font-bold mb-6">
-        Ace Interviews with{" "}
-        <span className="text-orange-500">AI-Powered</span> Learning
-      </h1>
-
-      <p className="text-gray-600 max-w-xl mb-6">
-        G 
-      </p>
-
-      <button
-        onClick={() => navigate("/login")}
-        className="bg-black text-white px-6 py-3 rounded-lg hover:scale-105 transition"
-      >
-        Get Started 
-      </button>
->>>>>>> f7e936b7c1352b3a4b0000364b491be6050fddb4
     </div>
   );
 };
 
-<<<<<<< HEAD
 export default LandingPage;
-=======
-export default LandingPage;
->>>>>>> f7e936b7c1352b3a4b0000364b491be6050fddb4
